@@ -41,6 +41,17 @@ namespace _01GenericLabb
 
             Console.WriteLine($"pSet size: (expected 6) {pSet.Count}");
             Console.WriteLine($"(expected exist) :  {pSet.Contains(p3)}");
+
+            var intSet = new MySet<int>();
+            for (int i = 0; i < 20; i++)
+            {
+                intSet.Add(i);
+            }
+
+            for (int i = 0; i < 25; i++)
+            {
+                Console.WriteLine($"intSet {(intSet.Contains(i) ? "contains" : "does not contain")} {i}");
+            }
         }
     }
 
