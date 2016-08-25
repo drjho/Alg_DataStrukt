@@ -37,7 +37,10 @@ namespace _01GenericLabb
 
             Console.WriteLine($"(expected not exist) :  {pSet.Contains(p3)}");
 
+            pSet.Add(p3);
 
+            Console.WriteLine($"pSet size: (expected 6) {pSet.Count}");
+            Console.WriteLine($"(expected exist) :  {pSet.Contains(p3)}");
         }
     }
 
