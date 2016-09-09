@@ -10,6 +10,26 @@ namespace _02StackQueue
     {
         static void Main(string[] args)
         {
+            Rpn();
+            Console.WriteLine("\n");
+            //QueueDemo();
+            //Console.WriteLine("\n");
+            //StackDemo();
+        }
+
+        static void Rpn()
+        {
+            var rpn = new RPN_Calculator();
+            while (true)
+            {
+                Console.Write("Input: ");
+                rpn.ReadInput(Console.ReadLine());
+                rpn.ShowResult();
+            }
+        }
+
+        static void QueueDemo()
+        {
             Console.WriteLine("Queue Demo:");
             var q = new MyQueue<int>();
 
@@ -54,9 +74,10 @@ namespace _02StackQueue
             {
                 Console.WriteLine(item);
             }
+        }
 
-            Console.WriteLine();
-            Console.WriteLine();
+        static void StackDemo()
+        {
             Console.WriteLine("Stack Demo:");
             var s = new MyStack<int>();
 
@@ -98,7 +119,7 @@ namespace _02StackQueue
             s.Clear();
             Console.WriteLine("--- List:");
             Console.WriteLine("Count: " + s.Count);
-                        foreach (var item in s)
+            foreach (var item in s)
             {
                 Console.WriteLine(item);
             }
