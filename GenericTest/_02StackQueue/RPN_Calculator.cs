@@ -14,11 +14,16 @@ namespace _02StackQueue
 
         public void ReadInput(string text)
         {
-            foreach (var c in text)
+            float f;
+            if (float.TryParse(text, out f))
             {
-                if (!char.IsDigit(c))
+                operands.Push(f);
+            }
+            else
+            {
+                if (text.Length == 1)
                 {
-                    switch (c)
+                    switch (text[0])
                     {
                         case '+':
                             PushToOperands(DoAddition());
@@ -37,8 +42,6 @@ namespace _02StackQueue
                     }
                 }
             }
-            PushToOperands(text);
-
         }
 
         private void PushToOperands(float f)
