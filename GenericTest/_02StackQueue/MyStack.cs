@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace _02StackQueue
 {
-    class MyQueue<T> : IMyCollection<T>, IEnumerable<T>
+    class MyStack<T> : IMyCollection<T>, IEnumerable<T>
     {
         class MyT
         {
             public T Item { get; set; }
-            public MyT Next { get; set; }
+            public MyT Previous { get; set; }
         }
-
-        private MyT Head { get; set; }
 
         private MyT Tail { get; set; }
 
@@ -24,70 +22,64 @@ namespace _02StackQueue
             get; private set;
         }
 
-        public void Enqueue(T item)
+        public void Push(T item)
         {
-            if (Head == null)
-            {
-                Head = new MyT() { Item = item };
-                Tail = Head;
-            }
-            else
-            {
-                var newT = new MyT() { Item = item };
-                Tail.Next = newT;
-                Tail = newT;
-            }
+            var newT = new MyT() { Item = item };
+            if (Tail != null)
+                newT.Previous = Tail;
+            Tail = newT;
             Count++;
         }
 
-        public T Dequeue()
+        public T Pop()
         {
-            var deqT = Head;
-            Head = deqT.Next;
-            deqT.Next = null;
+            var temp = Tail;
+            Tail = Tail.Previous;
+            temp.Previous = null;
             Count--;
-            return deqT.Item;
+            return temp.Item;
         }
 
         public T Peek()
         {
-            return Head.Item;
+            return Tail.Item;
         }
 
         public void Add(T item)
         {
-            Enqueue(item);
+            Push(item);
         }
 
         public void Clear()
         {
-            if (Head != null)
+            if (Tail != null)
             {
-                var current = Head;
+                var current = Tail;
                 do
                 {
                     var temp = current;
-                    current = current.Next;
+                    current = current.Previous;
                     temp.Item = default(T);
-                    temp.Next = null;
+                    temp.Previous = null;
                     temp = null;
                     --Count;
                 } while (current != null);
-                Head = null;
                 Tail = null;
             }
         }
 
         public bool Contains(T item)
         {
-            if (Head != null)
+            if (Tail != null)
             {
-                var current = Head;
+                var current = Tail;
                 do
                 {
                     if (current.Item.Equals(item))
+                    {
                         return true;
-                    current = current.Next;
+                    }
+                    current = current.Previous;
                 } while (current != null);
             }
             return false;
@@ -100,18 +92,18 @@ namespace _02StackQueue
 
         public T GetAndRemove()
         {
-            return Dequeue();
+            return Pop();
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            if (Head != null)
+            if (Tail != null)
             {
-                var current = Head;
+                var current = Tail;
                 do
                 {
                     yield return current.Item;
-                    current = current.Next;
+                    current = current.Previous;
                 } while (current != null);
             }
         }
