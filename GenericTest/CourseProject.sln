@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_01GenericLabbTests", "_01G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02StackQueue", "_02StackQueue\_02StackQueue.csproj", "{5FBA9F6F-2129-4C21-838B-E20B68D2C8E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_03SearchAndSort", "_03SearchAndSort\_03SearchAndSort.csproj", "{1DAF679C-ADB2-4E3E-ABCB-D29AFD4B8C0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5FBA9F6F-2129-4C21-838B-E20B68D2C8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FBA9F6F-2129-4C21-838B-E20B68D2C8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FBA9F6F-2129-4C21-838B-E20B68D2C8E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DAF679C-ADB2-4E3E-ABCB-D29AFD4B8C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DAF679C-ADB2-4E3E-ABCB-D29AFD4B8C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DAF679C-ADB2-4E3E-ABCB-D29AFD4B8C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DAF679C-ADB2-4E3E-ABCB-D29AFD4B8C0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
