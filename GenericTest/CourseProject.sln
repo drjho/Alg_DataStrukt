@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02StackQueue", "_02StackQu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_03SearchAndSort", "_03SearchAndSort\_03SearchAndSort.csproj", "{1DAF679C-ADB2-4E3E-ABCB-D29AFD4B8C0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_03SearchAndSortTests", "_03SearchAndSortTests\_03SearchAndSortTests.csproj", "{2FD65A27-26C4-4BFF-955E-FD4DA3F5EF99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1DAF679C-ADB2-4E3E-ABCB-D29AFD4B8C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DAF679C-ADB2-4E3E-ABCB-D29AFD4B8C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DAF679C-ADB2-4E3E-ABCB-D29AFD4B8C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FD65A27-26C4-4BFF-955E-FD4DA3F5EF99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FD65A27-26C4-4BFF-955E-FD4DA3F5EF99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FD65A27-26C4-4BFF-955E-FD4DA3F5EF99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FD65A27-26C4-4BFF-955E-FD4DA3F5EF99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

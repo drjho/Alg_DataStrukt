@@ -7,42 +7,67 @@ using System.Threading.Tasks;
 
 namespace _03SearchAndSort
 {
-    class SearchProgram
+    public class SearchProgram
     {
-        int[] intArray { get; set; } = null;
+        public int[] IntArray { get; set; } = null;
         Random random = new Random();
 
         static void Main(string[] args)
         {
             SearchProgram prog = new SearchProgram();
-            //Console.WriteLine(prog.LinearSearch(1));
+
+            //prog.GenerateScrambledArray(10);
+            //prog.BubbleSort();
 
             for (int i = 10; i <= 15; i++)
             {
                 var length = (int)Math.Pow(2, i);
-                Console.WriteLine(prog.GenerateSortedArray(length));
+                prog.GenerateSortedArray(length);
+                
                 Console.WriteLine(prog.RepeatSearch(100000, prog.LinearSearch));
                 Console.WriteLine(prog.RepeatSearch(100000, prog.BinarySearch));
+
+                prog.GenerateScrambledArray(length);
+                Stopwatch stopwatch = Stopwatch.StartNew();
+                prog.BubbleSort();
+                stopwatch.Stop();
+                Console.WriteLine($"Bubble sort of array with length {length} took {stopwatch.ElapsedMilliseconds} ms.");
+                Console.WriteLine(new string('-', 50));
             }
         }
 
-        public string GenerateSortedArray(int length)
+        public void Print()
         {
-            intArray = Enumerable.Range(0, length).ToArray();
-            return $"Generated an array of length: {length}";
+            Console.WriteLine(string.Join<int>(",", IntArray));
+        }
+
+        public void GenerateScrambledArray(int length)
+        {
+            GenerateSortedArray(length);
+            for (int i = 0; i < length; i++)
+            {
+                Swap(i, random.Next(length));
+            }
+            Console.WriteLine("The sorted array is now scrambled.");
+        }
+
+        public void GenerateSortedArray(int length)
+        {
+            IntArray = Enumerable.Range(0, length).ToArray();
+            Console.WriteLine($"Generated an array of length: {length}");
         }
 
         public string RepeatSearch(int repeats, Func<int, bool> searchMethod)
         {
-            if (intArray == null || intArray.Length == 0)
+            if (IntArray == null || IntArray.Length == 0)
             {
                 return "array not initiated.";
             }
-
+            Console.WriteLine($"Start {searchMethod.Method.Name} {repeats} times...");
             Stopwatch stopwatch = Stopwatch.StartNew();
             for (int i = 0; i < repeats; i++)
             {
-                int item = random.Next(intArray.Length);
+                int item = random.Next(IntArray.Length);
 
                 var found = searchMethod(item);
             }
@@ -52,9 +77,9 @@ namespace _03SearchAndSort
 
         public bool LinearSearch(int item)
         {
-            for (int j = 0; j < intArray.Length; j++)
+            for (int j = 0; j < IntArray.Length; j++)
             {
-                if (intArray[j] == item)
+                if (IntArray[j] == item)
                 {
                     return true;
                 }
@@ -65,15 +90,15 @@ namespace _03SearchAndSort
         public bool BinarySearch(int item)
         {
             int start = 0;
-            int end = intArray.Length - 1;
+            int end = IntArray.Length - 1;
             while (start < end)
             {
                 int pos = (int)Math.Floor(.5 * (start + end));
-                if (intArray[pos] == item)
+                if (IntArray[pos] == item)
                 {
                     return true;
                 }
-                else if (intArray[pos] < item)
+                else if (IntArray[pos] < item)
                 {
                     start = pos + 1;
                 }
@@ -84,5 +109,33 @@ namespace _03SearchAndSort
             }
             return false;
         }
+
+        public void Swap(int pos1, int pos2)
+        {
+            var temp = IntArray[pos1];
+            IntArray[pos1] = IntArray[pos2];
+            IntArray[pos2] = temp;
+        }
+
+        public void BubbleSort()
+        {
+            var swapped = false;
+            for (int i = 0; i < IntArray.Length; i++)
+            {
+                swapped = false;
+                for (int j = IntArray.Length - 1; j > i; j--)
+                {
+                    if (IntArray[j] < IntArray[j - 1])
+                    {
+                        Swap(j, j - 1);
+                         swapped = true;
+                    }
+                }
+                if (!swapped)
+                    break;
+            }
+            Console.WriteLine("Bubble Sort performed.");
+        }
+
     }
 }
