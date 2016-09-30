@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace _03SearchAndSort.Tests
 {
     [TestClass()]
-    public class SearchProgramTests
+    public class SearchSortLabbTests
     {
         [TestMethod()]
         public void BubbleSortTest()
         {
-            SearchProgram prog = new SearchProgram();
+            SearchSortLabb prog = new SearchSortLabb();
             prog.GenerateSortedArray(100);
             prog.Print();
             var expected = (int[])prog.IntArray.Clone();
