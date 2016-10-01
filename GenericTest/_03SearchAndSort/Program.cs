@@ -13,7 +13,15 @@ namespace _03SearchAndSort
     {
         static void Main(string[] args)
         {
-
+            SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 10));
+            SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 11));
+            SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 12));
+            SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 13));
+            SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 14));
+            SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 15));
+            Console.WriteLine("Press Q to quit or any othe key to continue...");
+            if (Console.ReadKey().Key == ConsoleKey.Q)
+                return;
 
             //new SearchSortLabb();
             var plates = SwedishCarPlate.GenerateCarPlates((int)Math.Pow(2, 13));
