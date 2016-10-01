@@ -51,7 +51,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Algorithms\SearchAlgorithmsTests.cs" />
     <Compile Include="Algorithms\SortAlgorithmTests.cs" />
+    <Compile Include="Entities\SwedishCarPlateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchSortLabbTests.cs" />
   </ItemGroup>

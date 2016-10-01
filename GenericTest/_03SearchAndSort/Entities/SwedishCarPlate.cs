@@ -54,24 +54,24 @@ namespace _03SearchAndSort.Entities
             plate.Numbers = str.ToString();
         }
 
-        //public static int CompareLetters(SwedishCarPlate plateA, SwedishCarPlate plateB)
-        //{
-        //    return String.Compare(plateA.Letters, plateB.Letters);
-        //}
-
-        //public static int CompareNumbers(SwedishCarPlate plateA, SwedishCarPlate plateB)
-        //{
-        //    return String.Compare(plateA.Numbers, plateB.Numbers);
-        //}
-
-        public static bool CompareNumber(SwedishCarPlate a, SwedishCarPlate b)
+        public static int CompareLetters(SwedishCarPlate plateA, SwedishCarPlate plateB)
         {
-            return string.Compare(a.Numbers, b.Numbers) < 0;
+            return String.Compare(plateA.Letters, plateB.Letters);
         }
 
-        public static bool CompareLetter(SwedishCarPlate a, SwedishCarPlate b)
+        public static int CompareNumbers(SwedishCarPlate plateA, SwedishCarPlate plateB)
         {
-            return string.Compare(a.Letters, b.Letters) < 0;
+            return String.Compare(plateA.Numbers, plateB.Numbers);
+        }
+
+        public static bool IsNumbersOfALessThanB(SwedishCarPlate a, SwedishCarPlate b)
+        {
+            return CompareNumbers(a, b) < 0;
+        }
+
+        public static bool IsLettersOfALessThanB(SwedishCarPlate a, SwedishCarPlate b)
+        {
+            return CompareLetters(a, b) < 0;
         }
 
     }
