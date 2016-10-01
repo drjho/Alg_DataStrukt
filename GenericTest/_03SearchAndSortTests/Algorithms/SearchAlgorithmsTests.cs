@@ -27,5 +27,23 @@ namespace _03SearchAndSort.Algorithms.Tests
             var actual = SearchAlgorithms.RegionGrow<int>(array, 3, (a, b) => a == b);
             CollectionAssert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void BinarySearchTest()
+        {
+            var array = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            var expected = 1;
+            var actual = SearchAlgorithms.BinarySearch<int>(array, 2, (a, b) => a-b);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void BinarySearchTest2()
+        {
+            var array = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            var expected = -1;
+            var actual = SearchAlgorithms.BinarySearch<int>(array, 9, (a, b) => a-b);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
