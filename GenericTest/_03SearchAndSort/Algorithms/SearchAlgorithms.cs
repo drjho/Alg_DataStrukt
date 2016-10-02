@@ -45,7 +45,7 @@ namespace _03SearchAndSort.Algorithms
             for (int i = 0; i < repeats; i++)
             {
                 int item = random.Next(array.Length);
-                BinarySearch(array, item, (a, b) => Math.Sign(a - b));
+                BinarySearch(array, item, (a, b) => a - b);
             }
             stopwatch.Stop();
             Console.WriteLine($"Time to perform BinarySearch {repeats} times took {stopwatch.ElapsedMilliseconds} ms");

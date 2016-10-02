@@ -13,17 +13,54 @@ namespace _03SearchAndSort
     {
         static void Main(string[] args)
         {
+            while (true)
+            {
+                Console.WriteLine("A. Benchmark Search");
+                Console.WriteLine("B. Benchmark Sort");
+                Console.WriteLine("C. Process Carplates");
+                var key = Console.ReadKey().Key;
+                switch (key)
+                {
+                    case ConsoleKey.A:
+                        BenchmarkSearch();
+                        break;
+                    case ConsoleKey.B:
+                        BenchmarkSort();
+                        break;
+                    case ConsoleKey.C:
+                        ProcessCarplates();
+                        break;
+                }
+
+                Console.WriteLine("Do you want to quit? [Y/N]");
+                if (Console.ReadKey().Key == ConsoleKey.Y)
+                    return;
+            }
+        }
+
+        static void BenchmarkSearch()
+        {
             SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 10));
             SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 11));
             SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 12));
             SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 13));
             SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 14));
             SearchAlgorithms.BenchmarkSearch(100000, (int)Math.Pow(2, 15));
-            Console.WriteLine("Press Q to quit or any othe key to continue...");
-            if (Console.ReadKey().Key == ConsoleKey.Q)
-                return;
+        }
 
-            //new SearchSortLabb();
+        static void BenchmarkSort()
+        {
+            SortAlgorithm.BenchmarkSort(5, (int)Math.Pow(2, 10));
+            SortAlgorithm.BenchmarkSort(5, (int)Math.Pow(2, 11));
+            SortAlgorithm.BenchmarkSort(5, (int)Math.Pow(2, 12));
+            SortAlgorithm.BenchmarkSort(5, (int)Math.Pow(2, 13));
+            SortAlgorithm.BenchmarkSort(5, (int)Math.Pow(2, 14));
+            SortAlgorithm.BenchmarkSort(5, (int)Math.Pow(2, 15));
+
+        }
+
+        static void ProcessCarplates()
+        {
             var plates = SwedishCarPlate.GenerateCarPlates((int)Math.Pow(2, 13));
             //var plates = SwedishCarPlate.GenerateCarPlates(5);
 
@@ -67,6 +104,8 @@ namespace _03SearchAndSort
 
             }
         }
+
+
 
     }
 }
