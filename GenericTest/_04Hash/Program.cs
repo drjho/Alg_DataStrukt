@@ -38,15 +38,24 @@ namespace _04Hash
         {
 
             Dictionary<string, int> dict;
-            using (StreamReader reader = new StreamReader("ordlista.txt", Encoding.Default))
+            try
             {
-                dict = new Dictionary<string, int>();
-                string line;
-                while (!reader.EndOfStream)
+                using (StreamReader reader = new StreamReader("ordlista.txt", Encoding.Default))
                 {
-                    line = reader.ReadLine();
-                    dict.Add(line, line.Length);
+                    dict = new Dictionary<string, int>();
+                    string line;
+                    while (!reader.EndOfStream)
+                    {
+                        line = reader.ReadLine();
+                        dict.Add(line, line.Length);
+                    }
                 }
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("file not found");
+                return;
             }
 
             Console.Write("Enter number of letters: ");
