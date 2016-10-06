@@ -38,7 +38,7 @@ namespace _04Hash
 
         static void VowelsCount()
         {
-            char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'y', 'å', 'ä', 'ö' };
+            var vowels = new HashSet<char> { 'a', 'e', 'i', 'o', 'u', 'y', 'å', 'ä', 'ö' };
             Dictionary<string, int> dict;
             try
             {
@@ -46,11 +46,14 @@ namespace _04Hash
                 {
                     dict = new Dictionary<string, int>();
                     string line;
+                    Stopwatch w = Stopwatch.StartNew();
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
                         dict.Add(line, line.Count(c => vowels.Contains(c)));
                     }
+                    w.Stop();
+                    Console.WriteLine($"Time: {w.ElapsedMilliseconds}  ms");
                 }
 
             }
