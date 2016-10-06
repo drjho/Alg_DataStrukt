@@ -13,7 +13,7 @@ namespace _04Hash
         static void Main(string[] args)
         {
             Benchmark();
-            LetterCount();
+            VowelsCount();
         }
 
         static void Benchmark()
@@ -34,9 +34,11 @@ namespace _04Hash
             }
         }
 
-        static void LetterCount()
-        {
 
+
+        static void VowelsCount()
+        {
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'y', 'å', 'ä', 'ö' };
             Dictionary<string, int> dict;
             try
             {
@@ -47,7 +49,7 @@ namespace _04Hash
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        dict.Add(line, line.Length);
+                        dict.Add(line, line.Count(c => vowels.Contains(c)));
                     }
                 }
 
@@ -58,7 +60,7 @@ namespace _04Hash
                 return;
             }
 
-            Console.Write("Enter number of letters: ");
+            Console.Write("Enter number of vowels: ");
             int input;
             if (!int.TryParse(Console.ReadLine(), out input))
                 return;
