@@ -18,10 +18,9 @@ namespace _03SearchAndSort.Entities
 
         public SwedishCarPlate()
         {
-            SetRandomLetters(this);
-            SetRandomNumbers(this);
+            Letters = GetRandomLetters();
+            Numbers = GetRandomNumbersAsString();
         }
-
 
         public static SwedishCarPlate[] GenerateCarPlates(int length)
         {
@@ -34,24 +33,25 @@ namespace _03SearchAndSort.Entities
             return plates;
         }
 
-        public static void SetRandomLetters(SwedishCarPlate plate)
+        public static string GetRandomLetters()
         {
             var str = new StringBuilder(3);
             for (int i = 0; i < 3; i++)
             {
                 str.Append((char)random.Next(65, 90));
             }
-            plate.Letters = str.ToString();
+            return str.ToString();
         }
 
-        public static void SetRandomNumbers(SwedishCarPlate plate)
+        public static string GetRandomNumbersAsString()
         {
             var str = new StringBuilder(3);
             for (int i = 0; i < 3; i++)
             {
                 str.Append((char)random.Next(48, 57));
             }
-            plate.Numbers = str.ToString();
+            return str.ToString();
+
         }
 
         public static int CompareLetters(SwedishCarPlate plateA, SwedishCarPlate plateB)

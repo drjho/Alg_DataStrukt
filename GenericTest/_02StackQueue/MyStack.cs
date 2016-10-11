@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _02StackQueue
 {
-    class MyStack<T> : IMyCollection<T>, IEnumerable<T>
+    public class MyStack<T> : IMyCollection<T>, IEnumerable<T>
     {
         class MyT
         {

@@ -47,6 +47,7 @@ namespace _03SearchAndSort.Algorithms
 
         public static void BubbleSort<T>(T[] array, Func<T, T, bool> compare)
         {
+            Console.Write("Bubble sorting... ");
             var swapped = false;
             for (int i = 0; i < array.Length; i++)
             {
@@ -62,7 +63,7 @@ namespace _03SearchAndSort.Algorithms
                 if (!swapped)
                     break;
             }
-            Console.WriteLine("Bubble Sort performed.");
+            Console.WriteLine("Done!");
         }
     }
 }

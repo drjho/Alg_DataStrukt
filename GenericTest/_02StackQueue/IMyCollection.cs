@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _02StackQueue
 {
-    interface IMyCollection<T>
+    public interface IMyCollection<T>
     {
         void Add(T item); // Jfr Enqueue / Push
 

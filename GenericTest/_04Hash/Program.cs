@@ -5,20 +5,72 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _03SearchAndSort.Algorithms;
+using _03SearchAndSort.Entities;
 
 namespace _04Hash
 {
     class Program
     {
+        static Random random { get; } = new Random();
+
         static void Main(string[] args)
         {
-            Benchmark();
-            VowelsCount();
+            //CarPlateBenchmark(100000);
+            //Benchmark();
+            //VowelsCount();
+        }
+
+        static void Rim()
+        {
+            
+        }
+
+        static void CarPlateBenchmark(int repeats)
+        {
+            for (int i = 10; i <= 15; i++)
+            {
+                var plates = SwedishCarPlate.GenerateCarPlates((int)Math.Pow(2, i));
+                var dict = plates.GroupBy(p => p.Letters, p => p).ToDictionary(g => g.Key, g => g.ToList());
+                //foreach (var item in dict)
+                //{
+                //    Console.WriteLine(item.Key + ": " + string.Join(",", item.Value.Select(p => p.CarPlate)));
+                //}
+                Stopwatch w = Stopwatch.StartNew();
+                for (int j = 0; j < repeats; j++)
+                {
+                    dict.ContainsKey(SwedishCarPlate.GetRandomLetters());
+                }
+                w.Stop();
+                Console.WriteLine($"Time to search in Dictionary {repeats} times: {w.ElapsedMilliseconds} ms");
+
+                SortAlgorithm.BubbleSort<SwedishCarPlate>(plates, SwedishCarPlate.IsLettersOfALessThanB);
+
+
+
+
+                w.Restart();
+                for (int j = 0; j < repeats; j++)
+                {
+                    var plate = new SwedishCarPlate { Letters = SwedishCarPlate.GetRandomLetters() };
+                    //Console.WriteLine("search for: " + plate.CarPlate);
+                    var pos = SearchAlgorithms.BinarySearch<SwedishCarPlate>(plates,
+                        plate,
+                        SwedishCarPlate.CompareLetters);
+                    //if (pos >= 0)
+                    //{
+                    //    var result = SearchAlgorithms.RegionGrow<SwedishCarPlate>(plates, pos, (a, b) => SwedishCarPlate.CompareLetters(a, b) == 0);
+                    //}
+                }
+                w.Stop();
+                Console.WriteLine($"Time to binarySearch {repeats} times: {w.ElapsedMilliseconds} ms");
+
+            }
+
         }
 
         static void Benchmark()
         {
-            Random random = new Random();
             for (int i = 10; i <= 15; i++)
             {
                 var max = (int)Math.Pow(2, i);
