@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _05BinarySearchTree.Tree;
 
 namespace _05BinarySearchTree
 {
@@ -14,13 +15,32 @@ namespace _05BinarySearchTree
 
         static void Main(string[] args)
         {
-            SortedPrint();
+            Console.WriteLine("Run sortedPrint?");
+            if (Console.ReadLine().ToLowerInvariant() == "y")
+                SortedPrint();
 
-            var addressGenerator = new AddressGenerator();
-            addressGenerator.GenerateAddresses(defaultSize);
-            Console.WriteLine(addressGenerator);
-            addressGenerator.SaveToFile("address book.txt");
-            Console.ReadLine();
+            Console.WriteLine("Generate new addresses?");
+            if (Console.ReadLine().ToLowerInvariant() == "y")
+            {
+                var addressGenerator = new AddressGenerator();
+                addressGenerator.GenerateAddresses(defaultSize);
+                Console.WriteLine(addressGenerator);
+                addressGenerator.SaveToFile("address book.txt");
+            }
+
+            Console.WriteLine("Import addresses?");
+            if (Console.ReadLine().ToLowerInvariant() == "y")
+            {
+                var addressBook = new AddressBook();
+                addressBook.ImportFromFile("address book.txt");
+
+                Console.WriteLine("Print addresses?");
+                if (Console.ReadLine().ToLowerInvariant() == "y")
+                {
+                    addressBook.Print();
+                }
+            }
+
 
         }
 
@@ -57,7 +77,7 @@ namespace _05BinarySearchTree
             if (dict != null)
             {
                 var words = dict.Keys.ToList();
-                words.Sort();    
+                words.Sort();
                 Console.WriteLine(String.Join("\n", words));
             }
         }

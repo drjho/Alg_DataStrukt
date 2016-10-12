@@ -11,24 +11,26 @@ namespace _05BinarySearchTree.Tree
     {
         public int Depth { get; set; }
 
-        public int Size { get; set; }
+        public int Size => Count;
 
         public Boolean IsBalanced { get; set; }
 
         public int Count { get; private set; }
 
-        public BinaryTreeNode<T> Root { get; set; }
+        public BinaryTreeNode<T> Root { get; private set; }
 
         public Func<T, T, int> Comparer { get; set; }
 
-        public BinarySearchTree()
+        public BinarySearchTree(Func<T, T, int> comparer)
         {
             Root = null;
+            Comparer = comparer;
         }
 
         public void Add(T item)
         {
             var node = new BinaryTreeNode<T>(item);
+            Count++;
             if (Root == null)
             {
                 Root = node;
@@ -42,13 +44,16 @@ namespace _05BinarySearchTree.Tree
 
         private void Insert(BinaryTreeNode<T> node, BinaryTreeNode<T> item)
         {
-            item.Depth++;
             if (Comparer == null)
             {
                 Console.WriteLine("Please define the comparer.");
                 return;
             }
-            int comp = Comparer(node.Value, item.Value);
+
+            if (++item.Depth > Depth)
+                Depth = item.Depth;
+
+            int comp = Comparer(item.Value, node.Value);
             if (comp < 0)
             {
                 if (node.Left == null)
@@ -76,14 +81,32 @@ namespace _05BinarySearchTree.Tree
             }
         }
 
+        public int ExplicitCount(BinaryTreeNode<T> node, int counter)
+        {
+            if (node == null)
+                return counter;
+            if (node.Left != null)
+            {
+                counter = ExplicitCount(node.Left, counter);
+            }
+            if (node.Right != null)
+            {
+                counter = ExplicitCount(node.Right, counter);
+            }
+            return ++counter;
+        }
+
         public void Clear()
         {
             Root.Clear();
+            Root = null;
         }
-        
-        private BinaryTreeNode<T> Find(BinaryTreeNode<T> node, T item)
+
+
+
+        public BinaryTreeNode<T> Find(BinaryTreeNode<T> node, T item)
         {
-            int comp = Comparer(node.Value, item);
+            int comp = Comparer(item, node.Value);
             if (comp < 0)
             {
                 return (node.Left == null) ? null : Find(node.Left, item);
