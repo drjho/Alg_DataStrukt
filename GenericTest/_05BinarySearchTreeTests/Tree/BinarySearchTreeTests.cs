@@ -96,9 +96,33 @@ namespace _05BinarySearchTree.Tree.Tests
         }
 
         [TestMethod()]
-        public void GetTest()
+        public void BalanceTest1()
         {
+            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            t.Add(4);
+            t.Add(5);
+            t.Add(3);
+            t.Add(2);
+            t.Add(1);
+            var actual = t.IsBalanced;
+            var expected = false;
 
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void BalanceTest2()
+        {
+            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            t.Add(3);
+            t.Add(4);
+            t.Add(5);
+            t.Add(2);
+
+            var actual = t.IsBalanced;
+            var expected = true;
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
@@ -122,5 +146,52 @@ namespace _05BinarySearchTree.Tree.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod()]
+        public void DepthDifferenceTest()
+        {
+            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            t.Add(5);
+            t.Add(4);
+            t.Add(3);
+            t.Add(2);
+            t.Add(1);
+
+            var expected = 4;
+            var actual = t.DepthDifference(t.Root);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void DepthDifferenceTest2()
+        {
+            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            t.Add(4);
+            t.Add(5);
+            t.Add(3);
+            t.Add(2);
+            t.Add(1);
+
+            var expected = 2;
+            var actual = t.DepthDifference(t.Root);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void DepthDifferenceTest3()
+        {
+            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            t.Add(4);
+            t.Add(5);
+            t.Add(2);
+            t.Add(3);
+            t.Add(1);
+
+            var expected = 1;
+            var actual = t.DepthDifference(t.Root);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

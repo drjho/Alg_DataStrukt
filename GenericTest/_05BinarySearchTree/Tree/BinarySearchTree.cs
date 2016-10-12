@@ -9,11 +9,11 @@ namespace _05BinarySearchTree.Tree
 {
     public class BinarySearchTree<T> : IMyCollection<T>
     {
-        public int Depth { get; set; }
+        public int Depth { get; private set; }
 
         public int Size => Count;
 
-        public Boolean IsBalanced { get; set; }
+        public Boolean IsBalanced => DepthDifference(Root) <= 1;
 
         public int Count { get; private set; }
 
@@ -64,7 +64,7 @@ namespace _05BinarySearchTree.Tree
                 else
                     Insert(node.Right, item);
             }
-            else // item.Value >= node.Value => to the left!
+            else if (comp < 0)
             {
                 if (node.Left == null)
                 {
@@ -74,6 +74,10 @@ namespace _05BinarySearchTree.Tree
                 }
                 else
                     Insert(node.Left, item);
+            }
+            else
+            {
+                Console.WriteLine($"item {item.Value} already exists in the tree");
             }
         }
 
@@ -92,13 +96,45 @@ namespace _05BinarySearchTree.Tree
             return ++counter;
         }
 
+        public int DepthDifference(BinaryTreeNode<T> node)
+        {
+            int d1, d2;
+
+            if (node.Left != null)
+                d1 = SubTreeDepth(node.Left);
+            else
+                d1 = node.Depth;
+
+            if (node.Right != null)
+                d2 = SubTreeDepth(node.Right);
+            else
+                d2 = node.Depth;
+
+            return Math.Abs(d1 - d2);
+        }
+
+        public int SubTreeDepth(BinaryTreeNode<T> node)
+        {
+            int d1, d2;
+
+            if (node.Left != null)
+                d1 = SubTreeDepth(node.Left);
+            else
+                d1 = node.Depth;
+
+            if (node.Right != null)
+                d2 = SubTreeDepth(node.Right);
+            else
+                d2 = node.Depth;
+
+            return Math.Max(d1, d2);
+        }
+
         public void Clear()
         {
             Root.Clear();
             Root = null;
         }
-
-
 
         public BinaryTreeNode<T> Find(BinaryTreeNode<T> node, T item)
         {
