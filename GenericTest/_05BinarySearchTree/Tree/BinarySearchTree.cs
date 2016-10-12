@@ -54,18 +54,7 @@ namespace _05BinarySearchTree.Tree
                 Depth = item.Depth;
 
             int comp = Comparer(item.Value, node.Value);
-            if (comp < 0)
-            {
-                if (node.Left == null)
-                {
-                    node.Left = item;
-                    item.Parent = node;
-                    item.IsLeftNode = true;
-                }
-                else
-                    Insert(node.Left, item);
-            }
-            else if (comp > 0)
+            if (comp > 0) // item.Value > node.Value => to the right!
             {
                 if (node.Right == null)
                 {
@@ -75,9 +64,16 @@ namespace _05BinarySearchTree.Tree
                 else
                     Insert(node.Right, item);
             }
-            else
+            else // item.Value >= node.Value => to the left!
             {
-                Console.WriteLine($"{item} already exists in the binary tree.");
+                if (node.Left == null)
+                {
+                    node.Left = item;
+                    item.Parent = node;
+                    item.IsLeftNode = true;
+                }
+                else
+                    Insert(node.Left, item);
             }
         }
 
