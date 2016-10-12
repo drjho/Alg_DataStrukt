@@ -77,7 +77,8 @@ namespace _05BinarySearchTree.Tree
             }
             else
             {
-                Console.WriteLine($"item {item.Value} already exists in the tree");
+                --Count;
+                Console.WriteLine($"item '{item.Value}' already exists in the tree");
             }
         }
 

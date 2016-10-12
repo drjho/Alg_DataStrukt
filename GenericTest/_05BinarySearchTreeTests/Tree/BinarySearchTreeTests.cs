@@ -56,6 +56,19 @@ namespace _05BinarySearchTree.Tree.Tests
         }
 
         [TestMethod()]
+        public void AddTest2()
+        {
+            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            t.Add(5);
+            t.Add(5);
+
+            var actual = 1;
+            var expected = t.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
         public void ClearTest()
         {
             var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
