@@ -35,9 +35,18 @@ namespace _05BinarySearchTree
                 addressBook.ImportFromFile("address book.txt");
 
                 Console.WriteLine("Print addresses?");
-                if (Console.ReadLine().ToLowerInvariant() == "y")
+                var input = Console.ReadLine().ToLowerInvariant();
+                if ( input == "yes")
                 {
                     addressBook.Print();
+                }
+                else if (input.Length == 1 )
+                {
+                    if (char.IsLetter(input[0]))
+                    {
+                        var filtered = addressBook.GetContactStartsWith(input);
+                        filtered.Print(10);
+                    }
                 }
 
             }

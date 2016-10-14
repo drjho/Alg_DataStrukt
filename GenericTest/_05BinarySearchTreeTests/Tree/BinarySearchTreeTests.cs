@@ -206,5 +206,21 @@ namespace _05BinarySearchTree.Tree.Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void ToSortedListTest()
+        {
+            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            t.Add(4);
+            t.Add(5);
+            t.Add(2);
+            t.Add(3);
+            t.Add(1);
+
+            var expected = new List<int> { 1, 2, 3, 4, 5 };
+            var actual = t.ToSortedList();
+
+            CollectionAssert.AreEqual(expected, actual);
+        }
     }
 }

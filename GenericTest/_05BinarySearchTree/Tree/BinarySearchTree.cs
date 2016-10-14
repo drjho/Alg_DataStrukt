@@ -82,6 +82,8 @@ namespace _05BinarySearchTree.Tree
             }
         }
 
+
+
         public int ExplicitCount(BinaryTreeNode<T> node, int counter)
         {
             if (node == null)
@@ -167,6 +169,31 @@ namespace _05BinarySearchTree.Tree
         public T GetAndRemove()
         {
             throw new NotImplementedException();
+        }
+
+        public List<T> ToSortedList()
+        {
+            if (Root != null)
+            {
+                return ToSortedList(Root, new List<T>());
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        List<T> ToSortedList(BinaryTreeNode<T> node, List<T> list)
+        {
+            if (node.Left != null)
+                list = ToSortedList(node.Left, list);
+
+            list.Add(node.Value);
+
+            if (node.Right != null)
+                list = ToSortedList(node.Right, list);
+
+            return list;
         }
     }
 }

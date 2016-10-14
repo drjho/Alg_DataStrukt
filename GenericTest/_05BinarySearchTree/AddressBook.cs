@@ -10,7 +10,12 @@ namespace _05BinarySearchTree
 {
     public class AddressBook
     {
-        BinarySearchTree<Contact> book = new BinarySearchTree<Contact>(Contact.NameComparer);
+        public BinarySearchTree<Contact> Book { get; private set; } = new BinarySearchTree<Contact>(Contact.NameComparer);
+
+        public void AddContact(Contact contact)
+        {
+            Book.Add(contact);
+        }
 
         public void ImportFromFile(string fileName)
         {
@@ -26,50 +31,79 @@ namespace _05BinarySearchTree
                         Name = strs[0].Trim(' '),
                         Number = strs[1].Trim(' ')
                     };
-                    book.Add(c);
+                    Book.Add(c);
                 }
             }
         }
 
-        public void Print()
+        public AddressBook GetContactStartsWith(string s)
         {
-            if (book.Root != null)
+            if (Book.Root != null)
             {
-                Print(book.Root);
+                var current = Book.Root;
+                s = s.ToLowerInvariant();
+                var contacts = FilterContacts(current, new BinarySearchTree<Contact>(Contact.NameComparer), (a) => s.CompareTo(a.Substring(0, 1)));
+                return new AddressBook { Book = contacts };
+            }
+            return null;
+        }
+
+        BinarySearchTree<Contact> FilterContacts(BinaryTreeNode<Contact> node, BinarySearchTree<Contact> contacts, Func<string, int> compare)
+        {
+            var comp = compare(node.Value.Name.ToLowerInvariant());
+
+            if (comp > 0) // node is to the left of what we look for...
+            {
+                if (node.Right != null)
+                    contacts = FilterContacts(node.Right, contacts, compare);
+            }
+            else if (comp < 0) // node is to the right of what we look for..
+            {
+                if (node.Left != null)
+                    contacts = FilterContacts(node.Left, contacts, compare);
+            }
+            else // we found what we look for...
+            {
+                contacts.Add(node.Value);
+                if (node.Left != null)
+                    contacts = FilterContacts(node.Left, contacts, compare);
+                if (node.Right != null)
+                    contacts = FilterContacts(node.Right, contacts, compare);
+            }
+            return contacts;
+        }
+
+        public void Print(int count = -1)
+        {
+            if (Book.Root != null)
+            {
+                Print(Book.Root, count);
             }
         }
 
-        public void Print(BinaryTreeNode<Contact> node)
+        public int Print(BinaryTreeNode<Contact> node, int count = -1)
         {
             if (node.Left != null)
-                Print(node.Left);
+                count = Print(node.Left, count);
 
-            Console.WriteLine(node.Value);
+            if (count > 0 ||count < 0)
+            {
+                Console.WriteLine(node.Value);
+                --count;
+            }
 
             if (node.Right != null)
-                Print(node.Right);
+                count = Print(node.Right, count);
+
+            return count;
         }
 
-        public class Contact
+        public List<Contact> ToSortedList()
         {
-            public string Name { get; set; }
-            public string Number { get; set; }
-
-            public static int NameComparer(Contact c1, Contact c2)
-            {
-                return String.Compare(c1.Name, c2.Name);
-            }
-
-            public static int NumberComparer(Contact c1, Contact c2)
-            {
-                return String.Compare(c1.Number, c2.Number);
-            }
-
-            public override string ToString()
-            {
-                return Name + " | " + Number;
-            }
+            return Book.ToSortedList();
         }
+
+
     }
 }
 
