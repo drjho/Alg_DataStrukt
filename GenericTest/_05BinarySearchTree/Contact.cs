@@ -27,7 +27,7 @@ namespace _05BinarySearchTree
 
             var otherContact = obj as Contact;
             if (otherContact != null)
-                return NameComparer(this, (Contact)obj);
+                return NameComparer(this, otherContact);
             else
                 throw new ArgumentException("Object is not a Temperature");
 
