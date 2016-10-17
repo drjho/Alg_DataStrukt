@@ -77,11 +77,26 @@ namespace _05BinarySearchTree
         {
             if (Book.Root != null)
             {
-                Print(Book.Root, CountDown(count));
+                Func<int, Func<bool>> closure = (i) =>
+                {
+                    int counter = i;
+
+                    return () =>
+                    {
+                        if (i < 0)
+                            return true;
+                        if (counter-- > 0)
+                            return true;
+                        else
+                            return false;
+                    };
+                };
+                Print(Book.Root, closure(count));
 
             }
         }
 
+        [Obsolete("Method not used, CountDown is defined in Print directly.")]
         static Func<bool> CountDown(int i)
         {
             int count = i;
