@@ -11,7 +11,7 @@ namespace _05BinarySearchTree
 {
     class Program
     {
-        const int defaultSize = 900;
+        const int defaultSize = 5000;
 
         static void Main(string[] args)
         {
@@ -36,14 +36,15 @@ namespace _05BinarySearchTree
 
                 Console.WriteLine("Print addresses?");
                 var input = Console.ReadLine().ToLowerInvariant();
-                if ( input == "yes")
+                if (input == "yes")
                 {
                     addressBook.Print();
                 }
-                else if (input.Length == 1 )
+                else if (input.Length == 1)
                 {
                     if (char.IsLetter(input[0]))
                     {
+
                         var filtered = addressBook.GetContactStartsWith(input);
                         filtered.Print(10);
                     }
@@ -53,6 +54,7 @@ namespace _05BinarySearchTree
 
 
         }
+
 
 
         static void SortedPrint()

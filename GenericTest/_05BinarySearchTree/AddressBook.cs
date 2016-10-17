@@ -77,25 +77,40 @@ namespace _05BinarySearchTree
         {
             if (Book.Root != null)
             {
-                Print(Book.Root, count);
+                Print(Book.Root, CountDown(count));
+
             }
         }
 
-        public int Print(BinaryTreeNode<Contact> node, int count = -1)
+        static Func<bool> CountDown(int i)
         {
-            if (node.Left != null)
-                count = Print(node.Left, count);
+            int count = i;
 
-            if (count > 0 ||count < 0)
+            return () =>
+            {
+                if (i < 0)
+                    return true;
+                if (count-- > 0)
+                    return true;
+                else
+                    return false;
+            };
+        }
+
+        public void Print(BinaryTreeNode<Contact> node, Func<bool> condition)
+        {
+
+            if (node.Left != null)
+                Print(node.Left, condition);
+
+            if (condition())
             {
                 Console.WriteLine(node.Value);
-                --count;
             }
 
             if (node.Right != null)
-                count = Print(node.Right, count);
+                Print(node.Right, condition);
 
-            return count;
         }
 
         public List<Contact> ToSortedList()
