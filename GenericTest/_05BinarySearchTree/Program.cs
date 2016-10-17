@@ -33,7 +33,7 @@ namespace _05BinarySearchTree
             {
                 var addressBook = new AddressBook();
                 addressBook.ImportFromFile("address book.txt");
-
+                Console.WriteLine("count: " + addressBook.Book.ExplicitCount());
                 Console.WriteLine("Print addresses?");
                 var input = Console.ReadLine().ToLowerInvariant();
                 if (input == "yes")

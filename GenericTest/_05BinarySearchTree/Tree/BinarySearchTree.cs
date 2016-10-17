@@ -74,7 +74,34 @@ namespace _05BinarySearchTree.Tree
             }
         }
 
+        public int ExplicitCount()
+        {
 
+            Func<Func<int>> closure = () =>
+            {
+                int counter = 0;
+                return () =>
+                {
+                    return ++counter;
+                };
+            };
+
+            if (Root != null)
+                return ClosureCount(Root, closure());
+            else
+                return 0;
+        }
+
+
+
+        public int ClosureCount(BinaryTreeNode<T> node, Func<int> addOne)
+        {
+            if (node.Left != null)
+                ClosureCount(node.Left, addOne);
+            if (node.Right != null)
+                ClosureCount(node.Right, addOne);
+            return addOne();
+        }
 
         public int ExplicitCount(BinaryTreeNode<T> node, int counter)
         {

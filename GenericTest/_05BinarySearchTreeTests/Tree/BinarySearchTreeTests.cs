@@ -162,7 +162,8 @@ namespace _05BinarySearchTree.Tree.Tests
             t.Add(2);
             t.Add(1);
             var expected = 5;
-            var actual = t.ExplicitCount(t.Root, 0);
+            //var actual = t.ExplicitCount(t.Root, 0);
+            var actual = t.ExplicitCount();
 
             Assert.AreEqual(expected, actual);
         }
