@@ -13,7 +13,7 @@ namespace _05BinarySearchTree.Tree
 
         public int Size => Count;
 
-        public Boolean IsBalanced => DepthDifference(Root) <= 1;
+        public Boolean IsBalanced => (Root == null) ? false : IsNodeBalanced(Root);
 
         public int Count { get; private set; }
 
@@ -89,6 +89,25 @@ namespace _05BinarySearchTree.Tree
                 counter = ExplicitCount(node.Right, counter);
             }
             return ++counter;
+        }
+
+        public bool IsNodeBalanced(BinaryTreeNode<T> node)
+        {
+            if (node != null)
+                if (DepthDifference(node) > 1)
+                    return false;
+
+            if (node.Left != null)
+                if (DepthDifference(node.Left) > 1)
+                    return false;
+
+
+            if (node.Right != null)
+                if (DepthDifference(node.Right) > 1)
+                    return false;
+
+            return true;
+
         }
 
         public int DepthDifference(BinaryTreeNode<T> node)

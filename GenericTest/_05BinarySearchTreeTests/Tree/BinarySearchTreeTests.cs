@@ -16,7 +16,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void SizeTest()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(5);
             t.Add(1);
             t.Add(2);
@@ -28,7 +28,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void AddTest()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(5);
             t.Add(4);
             t.Add(3);
@@ -44,7 +44,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void AddTest1()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(5);
             t.Add(4);
 
@@ -58,7 +58,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void AddTest2()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(5);
             t.Add(5);
 
@@ -71,7 +71,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void ClearTest()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(5);
             t.Add(4);
             t.Add(3);
@@ -88,7 +88,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void ContainsTest()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(5);
             t.Add(3);
             bool expected = true;
@@ -100,7 +100,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void ContainsTest2()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(5);
             bool expected = false;
             bool actual = t.Contains(4);
@@ -111,14 +111,18 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void BalanceTest1()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
-            t.Add(4);
+            var t = new BinarySearchTree<int>();
+            t.Add(8);
             t.Add(5);
-            t.Add(3);
-            t.Add(2);
-            t.Add(1);
+            t.Add(9);
+            t.Add(4);
+            t.Add(6);
+            t.Add(10);
+            t.Add(11);
+
             var actual = t.IsBalanced;
             var expected = false;
+            //Console.WriteLine(string.Join(",", t.ToSortedList()));
 
             Assert.AreEqual(expected, actual);
         }
@@ -126,14 +130,18 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void BalanceTest2()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
-            t.Add(3);
-            t.Add(4);
+            var t = new BinarySearchTree<int>();
+            t.Add(8);
             t.Add(5);
-            t.Add(2);
+            t.Add(9);
+            t.Add(4);
+            t.Add(6);
+            t.Add(10);
+            t.Add(3);
 
             var actual = t.IsBalanced;
             var expected = true;
+            //Console.WriteLine(string.Join(",", t.ToSortedList()));
 
             Assert.AreEqual(expected, actual);
         }
@@ -147,7 +155,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void ExplicitCountTest()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(5);
             t.Add(4);
             t.Add(3);
@@ -162,7 +170,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void DepthDifferenceTest()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(5);
             t.Add(4);
             t.Add(3);
@@ -178,7 +186,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void DepthDifferenceTest2()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(4);
             t.Add(5);
             t.Add(3);
@@ -194,7 +202,7 @@ namespace _05BinarySearchTree.Tree.Tests
         [TestMethod()]
         public void DepthDifferenceTest3()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(4);
             t.Add(5);
             t.Add(2);
@@ -204,13 +212,14 @@ namespace _05BinarySearchTree.Tree.Tests
             var expected = 1;
             var actual = t.DepthDifference(t.Root);
 
+
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
         public void ToSortedListTest()
         {
-            var t = new BinarySearchTree<int>((a, b) => a.CompareTo(b));
+            var t = new BinarySearchTree<int>();
             t.Add(4);
             t.Add(5);
             t.Add(2);
