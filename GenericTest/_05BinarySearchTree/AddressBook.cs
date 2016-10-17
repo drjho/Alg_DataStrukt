@@ -10,7 +10,7 @@ namespace _05BinarySearchTree
 {
     public class AddressBook
     {
-        public BinarySearchTree<Contact> Book { get; private set; } = new BinarySearchTree<Contact>(Contact.NameComparer);
+        public BinarySearchTree<Contact> Book { get; private set; } = new BinarySearchTree<Contact>();
 
         public void AddContact(Contact contact)
         {
@@ -42,7 +42,7 @@ namespace _05BinarySearchTree
             {
                 var current = Book.Root;
                 s = s.ToLowerInvariant();
-                var contacts = FilterContacts(current, new BinarySearchTree<Contact>(Contact.NameComparer), (a) => s.CompareTo(a.Substring(0, 1)));
+                var contacts = FilterContacts(current, new BinarySearchTree<Contact>(), (a) => s.CompareTo(a.Substring(0, 1)));
                 return new AddressBook { Book = contacts };
             }
             return null;
@@ -96,7 +96,7 @@ namespace _05BinarySearchTree
             }
         }
 
-        [Obsolete("Method not used, CountDown is defined in Print directly.")]
+        [Obsolete("Method not used, CountDown is defined in Print(int Count) directly.")]
         static Func<bool> CountDown(int i)
         {
             int count = i;

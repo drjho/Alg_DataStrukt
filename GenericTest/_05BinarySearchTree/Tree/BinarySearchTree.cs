@@ -7,7 +7,7 @@ using _02StackQueue;
 
 namespace _05BinarySearchTree.Tree
 {
-    public class BinarySearchTree<T> : IMyCollection<T>
+    public class BinarySearchTree<T> : IMyCollection<T> where T : IComparable
     {
         public int Depth { get; private set; }
 
@@ -19,12 +19,9 @@ namespace _05BinarySearchTree.Tree
 
         public BinaryTreeNode<T> Root { get; private set; }
 
-        public Func<T, T, int> Comparer { get; set; }
-
-        public BinarySearchTree(Func<T, T, int> comparer)
+        public BinarySearchTree()
         {
             Root = null;
-            Comparer = comparer;
         }
 
         public void Add(T item)
@@ -44,16 +41,11 @@ namespace _05BinarySearchTree.Tree
 
         private void Insert(BinaryTreeNode<T> node, BinaryTreeNode<T> item)
         {
-            if (Comparer == null)
-            {
-                Console.WriteLine("Please define the comparer.");
-                return;
-            }
 
             if (++item.Depth > Depth)
                 Depth = item.Depth;
 
-            int comp = Comparer(item.Value, node.Value);
+            int comp = item.Value.CompareTo(node.Value);
             if (comp > 0) // item.Value > node.Value => to the right!
             {
                 if (node.Right == null)
@@ -141,7 +133,7 @@ namespace _05BinarySearchTree.Tree
 
         public BinaryTreeNode<T> Find(BinaryTreeNode<T> node, T item)
         {
-            int comp = Comparer(item, node.Value);
+            int comp = item.CompareTo(node.Value);
             if (comp < 0)
             {
                 return (node.Left == null) ? null : Find(node.Left, item);
