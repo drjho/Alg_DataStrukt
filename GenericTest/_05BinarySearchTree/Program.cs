@@ -56,7 +56,6 @@ namespace _05BinarySearchTree
         }
 
 
-
         static void SortedPrint()
         {
             var vowels = new HashSet<char> { 'a', 'e', 'i', 'o', 'u', 'y', 'å', 'ä', 'ö' };

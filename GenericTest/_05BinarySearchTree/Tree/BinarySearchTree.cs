@@ -128,7 +128,6 @@ namespace _05BinarySearchTree.Tree
                 if (DepthDifference(node.Left) > 1)
                     return false;
 
-
             if (node.Right != null)
                 if (DepthDifference(node.Right) > 1)
                     return false;
