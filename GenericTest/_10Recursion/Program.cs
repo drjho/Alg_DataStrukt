@@ -16,11 +16,11 @@ namespace _10Recursion
 
         static void Recursion1()
         {
-            Console.WriteLine("Recusrion exercise 1:");
+            Console.WriteLine("Recursion exercise 1:");
             var length = 10;
             var array = Enumerable.Range(1, length).ToArray();
-            Console.WriteLine(string.Join(",", array));
-            Console.WriteLine(SumArray(array, length - 1));
+            Console.WriteLine("array to sum: " + string.Join(",", array));
+            Console.WriteLine("the sum: " + SumArray(array, length - 1));
             Console.WriteLine("--- Done ---");
         }
 
@@ -34,16 +34,16 @@ namespace _10Recursion
 
         static void Recursion2()
         {
-            Console.WriteLine("Recusrion exercise 2:");
+            Console.WriteLine("Recursion exercise 2:");
             var length = 10;
             var list1 = Enumerable.Range(1, length).ToList();
             var list2 = Enumerable.Range(101, length).ToList();
 
-            Console.WriteLine(string.Join(",", list1));
-            Console.WriteLine(string.Join(",", list2));
+            Console.WriteLine("list 1: " + string.Join(",", list1));
+            Console.WriteLine("list 2: " + string.Join(",", list2));
 
             var res = EveryOtherArray(list1, list2, null);
-            Console.WriteLine(string.Join(",", res));
+            Console.WriteLine("result: " + string.Join(",", res));
 
             Console.WriteLine("--- Done ---");
         }
