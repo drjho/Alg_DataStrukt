@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,11 @@ namespace _10Recursion
     {
         static void Main(string[] args)
         {
-            Recursion1();
-            Recursion2();
+            Permutation("abcd");
+            //Hanoi();
+            //Recursion1();
+            //Recursion2();
+            //PhoneList(@"C:\Users\m97_j\Downloads\samples\phone.in");
         }
 
         static void Recursion1()
@@ -60,5 +64,135 @@ namespace _10Recursion
             list2.RemoveAt(0);
             return EveryOtherArray(list1, list2, result);
         }
+
+        static void Permutation(String str)
+        {
+            permutation(str, 0, str.Length - 1);
+        }
+
+        static string swap(string str, int pos1, int pos2)
+        {
+            if (pos1 >= pos2)
+                return str;
+            var n = str.Length - 1;
+            return str.Substring(0, pos1) +
+                str[pos2] +
+                str.Substring(pos1 + 1, pos2 - pos1 - 1) +
+                str[pos1] +
+                ((pos2 == n) ? "" : str.Substring(pos2 + 1, n - pos2));
+        }
+
+        private static void permutation(string str, int pos1, int pos2)
+        {
+            if (pos1 == pos2)
+                Console.WriteLine(str);
+            else
+            {
+                for (int i = pos1; i <= pos2; i++)
+                {
+                    str = swap(str, pos1, i);
+                    permutation(str, pos1 + 1, pos2);
+                    str = swap(str, pos1, i);
+                }
+            }
+        }
+
+        static Stack<int> a = new Stack<int>(Enumerable.Range(1, 5).Reverse());
+        static Stack<int> b = new Stack<int>();
+        static Stack<int> c = new Stack<int>();
+        static int count = 0;
+
+        static void Hanoi()
+        {
+            HanoiMove(5, a, c, b);
+        }
+
+        static void HanoiOutput()
+        {
+            Console.WriteLine($"--- {count++} ---");
+            Console.WriteLine("src: " + String.Join(",", a.Reverse()));
+            Console.WriteLine("aux: " + String.Join(",", b.Reverse()));
+            Console.WriteLine("tgt: " + String.Join(",", c.Reverse()));
+
+        }
+
+        static void HanoiMove(int n, Stack<int> src, Stack<int> tgt, Stack<int> aux)
+        {
+            if (n > 0)
+            {
+                HanoiMove(n - 1, src, aux, tgt);
+
+                tgt.Push(src.Pop());
+
+                HanoiOutput();
+
+                HanoiMove(n - 1, aux, tgt, src);
+            }
+        }
+
+        static void PhoneList(string filename)
+        {
+            if (!File.Exists(filename))
+                return;
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                int numSets;
+                int numLines;
+                try
+                {
+
+                    if (int.TryParse(sr.ReadLine(), out numSets))
+                    {
+                        if (numSets < 1 || numSets > 40)
+                            throw new Exception("numSets error");
+                        for (int i = 0; i < numSets; i++)
+                        {
+                            var set = new SortedSet<string>(new PhoneComparer());
+                            bool notFound = true;
+                            if (int.TryParse(sr.ReadLine(), out numLines))
+                            {
+                                if (numLines < 1 || numLines > 10000)
+                                    throw new Exception("numLines error");
+                                for (int j = 0; j < numLines; j++)
+                                {
+                                    var str = sr.ReadLine();
+                                    if (str.Length > 10)
+                                        throw new Exception("phone number error");
+
+                                    if (!set.Add(str))
+                                    {
+                                        notFound = false;
+                                    }
+                                }
+                                Console.WriteLine((notFound) ? "YES" : "NO");
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
+
+
+    }
+
+    public class PhoneComparer : IComparer<string>
+    {
+        public int Compare(string x, string y)
+        {
+            var length = Math.Min(x.Length, y.Length);
+            for (int i = 0; i < length; i++)
+            {
+                if (x[i] != y[i])
+                    return x[i].CompareTo(y[i]);
+            }
+            return 0;
+        }
     }
 }
+
