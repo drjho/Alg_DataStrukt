@@ -140,7 +140,7 @@ namespace _10Recursion
                 int numLines;
                 try
                 {
-
+                    
                     if (int.TryParse(sr.ReadLine(), out numSets))
                     {
                         if (numSets < 1 || numSets > 40)
