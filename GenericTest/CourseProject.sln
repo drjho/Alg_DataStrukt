@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_10Recursion", "_10Recursio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReversedBinaryNumbers", "ReversedBinaryNumbers\ReversedBinaryNumbers.csproj", "{2155EB57-5322-4169-9D70-EB1062F86C0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaDelivery", "PizzaDelivery\PizzaDelivery.csproj", "{72654373-DC43-4A18-8706-FC102701D8A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{2155EB57-5322-4169-9D70-EB1062F86C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2155EB57-5322-4169-9D70-EB1062F86C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2155EB57-5322-4169-9D70-EB1062F86C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72654373-DC43-4A18-8706-FC102701D8A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72654373-DC43-4A18-8706-FC102701D8A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72654373-DC43-4A18-8706-FC102701D8A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72654373-DC43-4A18-8706-FC102701D8A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
