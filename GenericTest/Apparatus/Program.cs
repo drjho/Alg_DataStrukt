@@ -9,15 +9,14 @@ namespace Apparatus
 
         static void Main(string[] args)
         {
-            using (StreamReader sr = new StreamReader(@"C:\Users\m97_j\Downloads\samples\apparatus.03.in"))
+            using (StreamReader sr = new StreamReader(@"C:\Users\m97_j\Downloads\samples\apparatus.00.in"))
             {
                 var info = sr.ReadLine().Split(' ');
-                var switches = int.Parse(info[0]);
-                var lights = int.Parse(info[1]);
-
-                if (lights == 0)
+                var lights = int.Parse(info[0]);
+                var pics = int.Parse(info[1]);
+                if (pics == 0)
                 {
-                    Console.WriteLine(FactorialMod(switches, mod));
+                    Console.WriteLine(FactorialMod(lights, mod));
                     return;
                 }
                 var ones = GetOnes(sr);
@@ -26,13 +25,17 @@ namespace Apparatus
                     Console.WriteLine("0");
                     return;
                 }
-                var minFact = FactorialMod(ones, mod) * FactorialMod(switches - ones, mod);
-                for (int i = 1; i < lights; i++)
+                var minFact = FactorialMod(ones, mod) * FactorialMod(lights - ones, mod);
+                //Console.WriteLine(ones);
+                //Console.WriteLine(ones << 1);
+                //var diff = Math.Abs(lights - (ones << 1));
+                //Console.WriteLine(diff);
+                for (int i = 1; i < pics; i++)
                 {
                     var temp = GetOnes(sr);
                     if (temp != ones)
                     {
-                        if (switches - temp != ones)
+                        if (lights - temp != ones)
                         {
                             Console.WriteLine("0");
                             return;
@@ -40,7 +43,7 @@ namespace Apparatus
 
                     }
                 }
-                Console.WriteLine(FactorialMod(ones, mod) * FactorialMod(switches - ones, mod));
+                Console.WriteLine(FactorialMod(ones, mod) * FactorialMod(lights - ones, mod));
             }
 
 
