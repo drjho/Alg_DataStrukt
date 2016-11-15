@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyCombWalk", "HoneyCombW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimePath", "PrimePath\PrimePath.csproj", "{F0FE26AB-3A25-446F-A2B0-A11ECC26DA9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinnintStreak", "WinnintStreak\WinnintStreak.csproj", "{26414D68-EC0A-4D55-9BB2-7FD2C0D0B7D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{F0FE26AB-3A25-446F-A2B0-A11ECC26DA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0FE26AB-3A25-446F-A2B0-A11ECC26DA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0FE26AB-3A25-446F-A2B0-A11ECC26DA9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26414D68-EC0A-4D55-9BB2-7FD2C0D0B7D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26414D68-EC0A-4D55-9BB2-7FD2C0D0B7D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26414D68-EC0A-4D55-9BB2-7FD2C0D0B7D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26414D68-EC0A-4D55-9BB2-7FD2C0D0B7D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
