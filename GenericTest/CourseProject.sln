@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apparatus", "Apparatus\Appa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyCombWalk", "HoneyCombWalk\HoneyCombWalk.csproj", "{FA1D8290-8EB9-4550-B23D-3DA64DEF1767}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimePath", "PrimePath\PrimePath.csproj", "{F0FE26AB-3A25-446F-A2B0-A11ECC26DA9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{FA1D8290-8EB9-4550-B23D-3DA64DEF1767}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA1D8290-8EB9-4550-B23D-3DA64DEF1767}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA1D8290-8EB9-4550-B23D-3DA64DEF1767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0FE26AB-3A25-446F-A2B0-A11ECC26DA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0FE26AB-3A25-446F-A2B0-A11ECC26DA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0FE26AB-3A25-446F-A2B0-A11ECC26DA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0FE26AB-3A25-446F-A2B0-A11ECC26DA9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
