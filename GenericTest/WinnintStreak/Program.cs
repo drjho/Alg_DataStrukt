@@ -56,6 +56,7 @@ namespace WinnintStreak
         {
             // how many matches with a certain probablity
             // it is not P(n,k) !!
+            // should be C(n, k)!!
             var arr = new int[matches + 1];
             for (int i = matches; i >= arr.Length / 2; i--)
             {
