@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinnintStreak", "WinnintStr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaconEggsSpam", "BaconEggsSpam\BaconEggsSpam.csproj", "{25EB81BC-6643-4EA8-8464-A4E2FD361B1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverlappingMaps", "OverlappingMaps\OverlappingMaps.csproj", "{F0F18A7B-577A-4F6E-B06B-F729C12A538A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CD", "CD\CD.csproj", "{449FE023-2622-47F1-A177-0943DCB675B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,14 @@ Global
 		{25EB81BC-6643-4EA8-8464-A4E2FD361B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25EB81BC-6643-4EA8-8464-A4E2FD361B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25EB81BC-6643-4EA8-8464-A4E2FD361B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0F18A7B-577A-4F6E-B06B-F729C12A538A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0F18A7B-577A-4F6E-B06B-F729C12A538A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0F18A7B-577A-4F6E-B06B-F729C12A538A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0F18A7B-577A-4F6E-B06B-F729C12A538A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449FE023-2622-47F1-A177-0943DCB675B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449FE023-2622-47F1-A177-0943DCB675B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449FE023-2622-47F1-A177-0943DCB675B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449FE023-2622-47F1-A177-0943DCB675B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
