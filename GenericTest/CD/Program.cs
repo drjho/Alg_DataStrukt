@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CD
 {
     class Program
     {
-        static bool[] cds;
+        static int[] cds;
 
         static void Main(string[] args)
         {
@@ -19,20 +15,28 @@ namespace CD
                 var m = int.Parse(line[1]);
                 if (n == 0 && m == 0)
                     break;
-                cds = new bool[1000000001];
+                cds = new int[n];
                 for (int i = 0; i < n; i++)
                 {
-                    cds[int.Parse(Console.ReadLine())] = true;
+                    cds[i] = int.Parse(Console.ReadLine());
                 }
                 var res = 0;
+                var i1 = 0;
                 for (int i = 0; i < m; i++)
                 {
-                    if (cds[int.Parse(Console.ReadLine())])
+                    var j2 = int.Parse(Console.ReadLine());
+                    if (i1 >= cds.Length || j2 < cds[i1])
+                        continue;
+                    while (j2 > cds[i1])
                     {
-                        res++;
+                        if (++i1 >= cds.Length)
+                            break;
+                        
                     }
+                    if (i1 < cds.Length && j2 == cds[i1])
+                        res++;
                 }
-                Console.WriteLine(res);
+                Console.WriteLine(res); 
 
             }
         }
