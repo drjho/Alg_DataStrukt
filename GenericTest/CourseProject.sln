@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverlappingMaps", "Overlapp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CD", "CD\CD.csproj", "{449FE023-2622-47F1-A177-0943DCB675B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitByBit", "BitByBit\BitByBit.csproj", "{28DD71C9-A6F3-487C-8A68-3CADBC7459F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{449FE023-2622-47F1-A177-0943DCB675B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{449FE023-2622-47F1-A177-0943DCB675B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{449FE023-2622-47F1-A177-0943DCB675B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28DD71C9-A6F3-487C-8A68-3CADBC7459F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28DD71C9-A6F3-487C-8A68-3CADBC7459F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28DD71C9-A6F3-487C-8A68-3CADBC7459F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28DD71C9-A6F3-487C-8A68-3CADBC7459F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

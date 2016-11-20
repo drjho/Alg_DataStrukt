@@ -11,11 +11,11 @@ namespace _10Recursion
     {
         static void Main(string[] args)
         {
-            Permutation("abcd");
+            //Permutation("abcd");
             //Hanoi();
             //Recursion1();
             //Recursion2();
-            //PhoneList(@"C:\Users\m97_j\Downloads\samples\phone.in");
+            PhoneList(@"C:\Users\m97_j\Downloads\samples\phone.in");
         }
 
         static void Recursion1()
@@ -140,28 +140,32 @@ namespace _10Recursion
                 int numLines;
                 try
                 {
-                    
+
                     if (int.TryParse(sr.ReadLine(), out numSets))
                     {
-                        if (numSets < 1 || numSets > 40)
-                            throw new Exception("numSets error");
+                        //if (numSets < 1 || numSets > 40)
+                        //    throw new Exception("numSets error");
                         for (int i = 0; i < numSets; i++)
                         {
                             var set = new SortedSet<string>(new PhoneComparer());
                             bool notFound = true;
                             if (int.TryParse(sr.ReadLine(), out numLines))
                             {
-                                if (numLines < 1 || numLines > 10000)
-                                    throw new Exception("numLines error");
+                                //if (numLines < 1 || numLines > 10000)
+                                //    throw new Exception("numLines error");
                                 for (int j = 0; j < numLines; j++)
                                 {
                                     var str = sr.ReadLine();
-                                    if (str.Length > 10)
-                                        throw new Exception("phone number error");
+                                    //if (str.Length > 10)
+                                    //    throw new Exception("phone number error");
 
                                     if (!set.Add(str))
                                     {
                                         notFound = false;
+                                        while (++j < numLines)
+                                        {
+                                            sr.ReadLine();
+                                        }
                                     }
                                 }
                                 Console.WriteLine((notFound) ? "YES" : "NO");
