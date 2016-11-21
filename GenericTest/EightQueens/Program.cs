@@ -43,7 +43,7 @@ namespace EightQueens
                     }
                 }
             }
-            Console.WriteLine(count == 8 ? "valid" : "invalid");
+            Console.WriteLine(count < 8 ? "invalid" : "valid");
         }
     }
 }
