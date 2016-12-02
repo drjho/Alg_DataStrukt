@@ -13,29 +13,8 @@ namespace AListGame
 
         static void Main(string[] args)
         {
-            //GenPrimes((int)Math.Pow(10, 9));
-            //Console.WriteLine( "d" );
-            //Console.WriteLine(string.Join(",", primes));
-
-            //int input = 0;
-            //for (int i = 999999999; i > 0; i--)
-            //{
-            //    if (IsPrime6(i))
-            //    {
-            //        Console.WriteLine(i);
-            //        input = i;
-            //        break;
-            //    }
-            //}
-
             var input = int.Parse(Console.ReadLine());
             ListGame(input);
-            //if (IsPrime(input))
-            //    Console.WriteLine(0);
-            //else
-            //    Console.WriteLine(Find(input, 2, 0));
-            //Console.WriteLine(Factors(input));
-
         }
 
         static void ListGame(int n)
@@ -88,61 +67,6 @@ namespace AListGame
                 w = 6 - w;
             }
             return true;
-        }
-
-        static void GenPrimes(int n)
-        {
-            for (int i = 0; i < n; i++)
-            {
-                if (IsPrime6(i))
-                    ;
-                    //Console.WriteLine(i);
-            }
-        }
-
-        static bool IsPrime(int n)
-        {
-            if (n % 2 == 0)
-                return false;
-            for (int i = 3; i <= Math.Sqrt(n); i += 2)
-            {
-                if (n % i == 0)
-                    return false;
-            }
-            return true;
-        }
-
-        static int Find(int n, int s, int c)
-        {
-            for (int i = s; i <= n; i++)
-            {
-                if (n % i == 0)
-                {
-                    //Console.WriteLine(n + " " + i);
-                    return Find(n / i, i, ++c);
-                }
-            }
-            return c;
-        }
-
-        static int Factors(int n)
-        {
-            int f = 0;
-            int c = 2;
-            while (n > 1)
-            {
-                if (n % c == 0)
-                {
-                    n /= c;
-                    Console.WriteLine(n + " " + c);
-                    f++;
-                }
-                else
-                {
-                    c++;
-                }
-            }
-            return f;
         }
     }
 }
