@@ -8,9 +8,6 @@ namespace AListGame
 {
     class Program
     {
-        static List<int> primes = new List<int> { 2, 3, 5, 7 };
-        static int index = 0;
-
         static void Main(string[] args)
         {
             var input = int.Parse(Console.ReadLine());
