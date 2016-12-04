@@ -89,8 +89,7 @@ namespace SSSP_NNW
                             break;
                         }
                         candidates.Remove(current.Key);
-                        if (!graph.ContainsKey(current.Key.u))
-                            continue;
+
                         foreach (var e in graph[current.Key.u])
                         {
                             var n = new Node(e.Key);
@@ -109,13 +108,14 @@ namespace SSSP_NNW
                     if (!found)
                         Console.WriteLine("Impossible");
                 }
+                Console.WriteLine();
             }
 
         }
 
         static void AddEdge(string[] str)
         {
-            graph[int.Parse(str[0])].Add(int.Parse(str[1]), int.Parse(str[2]));
+            graph[int.Parse(str[0])][int.Parse(str[1])] = int.Parse(str[2]);
         }
 
     }
