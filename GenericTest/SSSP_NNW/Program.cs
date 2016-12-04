@@ -9,116 +9,127 @@ namespace SSSP_NNW
 {
     class Program
     {
-
-
-        class Edge
+        class Node
         {
             public int u;
-            public int v;
-            public int w;
-            public Edge previous;
-            public int f;
+            public Node previous;
+            public float f;
 
-            public static Edge Make(string str)
+            public Node(int u)
             {
-                var lines = str.Split(' ');
-                return new Edge
-                {
-                    u = int.Parse(lines[0]),
-                    v = int.Parse(lines[1]),
-                    w = int.Parse(lines[2])
-                };
-            }
-
-            public static Edge Start(int start)
-            {
-                return new Edge { u = start, v = start, w = 0 };
+                this.u = u;
             }
         }
 
-        static Dictionary<int, Dictionary<int, float>> info = new Dictionary<int, Dictionary<int, float>>();
+        class EqualComparer : IEqualityComparer<Node>
+        {
+            public bool Equals(Node x, Node y)
+            {
+                return x.u.Equals(y.u);
+            }
 
-        static Dictionary<int, HashSet<Edge>> dict = new Dictionary<int, HashSet<Edge>>();
+            public int GetHashCode(Node obj)
+            {
+                return obj.u.GetHashCode();
+            }
+        }
+
+        class Comparer : IComparer<Node>
+        {
+            public int Compare(Node x, Node y)
+            {
+                return x.f.CompareTo(y.f);
+            }
+        }
+
+        static Node[] nodes;
+
+        static Dictionary<int, Dictionary<int, float>> graph = new Dictionary<int, Dictionary<int, float>>();
 
         static string[] lines;
 
         static void Main(string[] args)
         {
             lines = Console.ReadLine().Split(' ');
-            var nodes = int.Parse(lines[0]);
-            var edges = int.Parse(lines[1]);
-            var queries = int.Parse(lines[2]);
+            var numN = int.Parse(lines[0]);
+            var numE = int.Parse(lines[1]);
+            var numQ = int.Parse(lines[2]);
             var start = int.Parse(lines[3]);
 
-            for (int i = 0; i < nodes; i++)
+            nodes = new Node[numN];
+            for (int i = 0; i < numN; i++)
             {
-                info[i] = new Dictionary<int, float>();
+                graph[i] = new Dictionary<int, float>();
             }
 
-            for (int i = 0; i < edges; i++)
+            for (int i = 0; i < numE; i++)
             {
                 AddEdge(Console.ReadLine().Split(' '));
-                //var e = Edge.Make(Console.ReadLine());
-                //AddEdge(e);
             }
 
-            for (int i = 0; i < queries; i++)
+            for (int i = 0; i < numQ; i++)
             {
-                var end = int.Parse(Console.ReadLine());
-                if (start == end)
+                var goal = int.Parse(Console.ReadLine());
+                if (start == goal)
                 {
                     Console.WriteLine(0);
                     continue;
                 }
-                var visited = new HashSet<int>();
-                var openList = new SortedSet<Edge>(new EdgeComparer());
-                openList.Add(Edge.Start(start));
-                while (openList.Count > 0)
+                //var visited = new Dictionary<Node, float>(new EqualComparer());
+                var visited = new Dictionary<int, Node>();
+                var candidates = new SortedDictionary<Node, float>(new Comparer());
+                candidates.Add(new Node(start), 0);
+                while (candidates.Count > 0)
                 {
-                    var current = openList.First();
-                    visited.Add(current.u);
-                    openList.Remove(current);
-                    foreach (var e in dict[current.u])
+                    var current = candidates.First();
+                    candidates.Remove(current.Key);
+                    foreach (var e in graph[current.Key.u])
                     {
-                        if (e.v == end)
+                        var n = new Node(e.Key) { previous = current.Key };
+                        
+                        if (e.Key == goal)
                         {
-
+                            Console.WriteLine(GetPathSteps(n));
                             break;
                         }
-                        if (!visited.Contains(e.u))
-                            openList.Add(e);
+                        n.f = current.Key.f + GetWeight(current.Key.u, n.u);
+
+                        if (candidates.ContainsKey(n) && candidates[n] < n.f)
+                            continue;
+                        if (visited.ContainsKey(n.u) && visited[n.u].f < n.f)
+                            continue;
+                        candidates[n] = n.f;
+
                     }
+                    //visited.Add(current.Key, current.Value);
+                    visited[current.Key.u] = current.Key;
                 }
-
             }
         }
 
 
 
-        class EdgeComparer : IComparer<Edge>
+        static int GetPathSteps(Node n)
         {
-            public int Compare(Edge x, Edge y)
+            int c = 0;
+            while (n.previous != null)
             {
-                return x.w.CompareTo(y.w);
+                c++;
+                n = n.previous;
             }
+            return c;
         }
+
+        static float GetWeight(int u, int v)
+        {
+            return graph[u][v];
+        }
+
 
         static void AddEdge(string[] str)
         {
-            info[int.Parse(str[0])].Add(int.Parse(str[1]), int.Parse(str[2]));
+            graph[int.Parse(str[0])].Add(int.Parse(str[1]), int.Parse(str[2]));
         }
 
-        static void AddEdge(Edge e)
-        {
-            if (dict.ContainsKey(e.u))
-                dict[e.u].Add(e);
-            else
-                dict[e.u] = new HashSet<Edge> { e };
-
-            //if (dict.ContainsKey(e.v))
-            //    dict[e.v].Add(e);
-            //else
-            //    dict[e.v] = new HashSet<Edge> { e };
-        }
     }
 }
