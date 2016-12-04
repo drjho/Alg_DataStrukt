@@ -15,7 +15,11 @@ namespace _10Recursion
             //Hanoi();
             //Recursion1();
             //Recursion2();
-            PhoneList(@"C:\Users\m97_j\Downloads\samples\phone.in");
+            //PhoneList(@"C:\Users\m97_j\Downloads\samples\phone.in");
+
+            Console.WriteLine("123".CompareTo("1234"));
+            Console.WriteLine("123".CompareTo("123"));
+            Console.WriteLine("123".CompareTo("124"));
         }
 
         static void Recursion1()

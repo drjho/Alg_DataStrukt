@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EightQueens", "EightQueens\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AListGame", "AListGame\AListGame.csproj", "{153B6F0A-A699-4944-A955-6138C5A5CB8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSSP_NNW", "SSSP_NNW\SSSP_NNW.csproj", "{1C4D464A-CD7A-42EC-892B-74E7E7DC02A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{153B6F0A-A699-4944-A955-6138C5A5CB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{153B6F0A-A699-4944-A955-6138C5A5CB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{153B6F0A-A699-4944-A955-6138C5A5CB8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4D464A-CD7A-42EC-892B-74E7E7DC02A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4D464A-CD7A-42EC-892B-74E7E7DC02A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4D464A-CD7A-42EC-892B-74E7E7DC02A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4D464A-CD7A-42EC-892B-74E7E7DC02A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
