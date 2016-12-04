@@ -44,88 +44,74 @@ namespace SSSP_NNW
 
         static void Main(string[] args)
         {
-            try
+            while (true)
             {
+                lines = Console.ReadLine().Split(' ');
+                var numN = int.Parse(lines[0]);
+                var numE = int.Parse(lines[1]);
+                var numQ = int.Parse(lines[2]);
+                var start = int.Parse(lines[3]);
 
+                if (numN == 0 && numE == 0 && numQ == 0 && start == 0)
+                    return;
 
-                while (true)
+                graph = new Dictionary<int, Dictionary<int, float>>();
+                for (int i = 0; i < numN; i++)
                 {
-                    lines = Console.ReadLine().Split(' ');
-                    var numN = int.Parse(lines[0]);
-                    var numE = int.Parse(lines[1]);
-                    var numQ = int.Parse(lines[2]);
-                    var start = int.Parse(lines[3]);
+                    graph[i] = new Dictionary<int, float>();
+                }
 
-                    if (numN == 0 && numE == 0 && numQ == 0 && start == 0)
-                        return;
+                for (int i = 0; i < numE; i++)
+                {
+                    AddEdge(Console.ReadLine().Split(' '));
+                }
 
-                    graph = new Dictionary<int, Dictionary<int, float>>();
-                    for (int i = 0; i < numN; i++)
+                for (int i = 0; i < numQ; i++)
+                {
+                    var goal = int.Parse(Console.ReadLine());
+                    if (start == goal)
                     {
-                        graph[i] = new Dictionary<int, float>();
+                        Console.WriteLine(0);
+                        continue;
                     }
 
-                    for (int i = 0; i < numE; i++)
+                    var visited = new Dictionary<int, Node>();
+                    var candidates = new SortedDictionary<Node, float>(new Comparer());
+                    candidates[new Node(start)] = 0;
+                    bool found = false;
+                    while (candidates.Count > 0)
                     {
-                        AddEdge(Console.ReadLine().Split(' '));
-                    }
-
-                    for (int i = 0; i < numQ; i++)
-                    {
-                        var goal = int.Parse(Console.ReadLine());
-                        if (start == goal)
+                        var current = candidates.First();
+                        if (current.Key.u == goal)
                         {
-                            Console.WriteLine(0);
+                            Console.WriteLine(current.Key.f);
+                            found = true;
+                            break;
+                        }
+                        candidates.Remove(current.Key);
+                        if (!graph.ContainsKey(current.Key.u))
                             continue;
-                        }
-
-                        var visited = new Dictionary<int, Node>();
-                        var candidates = new SortedDictionary<Node, float>(new Comparer());
-                        candidates[new Node(start)] = 0;
-                        bool found = false;
-                        while (candidates.Count > 0)
+                        foreach (var e in graph[current.Key.u])
                         {
-                            var current = candidates.First();
-                            if (current.Key.u == goal)
-                            {
-                                Console.WriteLine(current.Key.f);
-                                found = true;
-                                break;
-                            }
-                            candidates.Remove(current.Key);
+                            var n = new Node(e.Key);
 
-                            foreach (var e in graph[current.Key.u])
-                            {
-                                var n = new Node(e.Key);
+                            n.f = current.Key.f + e.Value;
 
-                                n.f = current.Key.f + e.Value;
+                            if (candidates.ContainsKey(n) && candidates[n] < n.f)
+                                continue;
+                            if (visited.ContainsKey(n.u) && visited[n.u].f < n.f)
+                                continue;
+                            candidates[n] = n.f;
 
-                                if (candidates.ContainsKey(n) && candidates[n] < n.f)
-                                    continue;
-                                if (visited.ContainsKey(n.u) && visited[n.u].f < n.f)
-                                    continue;
-                                candidates[n] = n.f;
-
-                            }
-                            visited[current.Key.u] = current.Key;
                         }
-                        if (!found)
-                            Console.WriteLine("Impossible");
+                        visited[current.Key.u] = current.Key;
                     }
+                    if (!found)
+                        Console.WriteLine("Impossible");
                 }
             }
-            catch (Exception)
-            {
 
-                throw;
-            }
         }
-
-        static float GetWeight(int u, int v)
-        {
-            return graph[u][v];
-        }
-
 
         static void AddEdge(string[] str)
         {
